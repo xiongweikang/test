@@ -1,0 +1,49 @@
+#include<stdio.h>
+int main() {
+    int a, b, c;
+    int A, B;
+    int C = 0;
+    int t;
+    scanf_s("%d", &C);
+    int j=1;
+    if (C== 495)
+    {
+        printf("1: 954 - 459 = 495");//注意边界值，第一次输入495的情况。
+        return 0;
+    }
+    while (C != 495) {
+        a = C % 10;
+        b = (C / 10) % 10;
+        c = (C / 100) % 10;
+        if (a == b && a == c ) {
+            printf("1: %d - %d = 0",  C, C);
+            break;
+        }
+        if (c == 0) {
+            break;
+        }
+        if (a < c) {
+            t = a;
+            a = c;
+            c = t;
+        }
+        if (a < b) {
+            t = a;
+            a = b;
+            b = t;
+        }
+        if (b < c) {
+            t = b;
+            b = c;
+            c = t;
+
+        }
+        A = a * 100 + b * 10 + c;
+        B = c * 100 + b * 10 + a;
+        C = A - B;
+        printf("%d: %d - %d = %d\n", j, A, B, C);
+        j++;
+    }
+    return 0;
+
+}
